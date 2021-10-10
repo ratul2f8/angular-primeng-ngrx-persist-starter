@@ -1,0 +1,145 @@
+<p-dialog
+  [visible]="true"
+  [breakpoints]="{ '960px': '75vw', '640px': '100vw' }"
+  [style]="{ width: '50vw' }"
+  [modal]="true"
+  [draggable]="false"
+  [closable]="false"
+  [maximizable]="true"
+>
+  <ng-template pTemplate="header"> Add a tutorial</ng-template>
+  <ng-template pTemplate="content">
+    <div
+      class="p-d-flex p-flex-column"
+      style="
+        height: auto;
+        overflow: auto;
+        justify-content: center;
+        align-items: center;
+        padding: 1em;
+      "
+    >
+      <div class="p-fluid" style="margin-bottom: 1em">
+        <div class="p-field">
+          <label for="name">Name</label>
+          <input
+            id="name"
+            required
+            type="text"
+            pInputText
+            [formControl]="name"
+            placeholder="Enter title of the course"
+          />
+          <small
+            id="username-help"
+            style="color: brown"
+            *ngIf="name.errors?.required"
+            >Name of the course is required</small
+          >
+          <small
+            id="username-help"
+            style="color: brown"
+            *ngIf="url.errors?.minlength"
+            >Name of the course must be at least 5 characters long</small
+          >
+        </div>
+      </div>
+      <div class="p-fluid" style="margin-bottom: 1em">
+        <div class="p-field">
+          <label for="url">Description</label>
+          <input
+            id="url"
+            required
+            type="text"
+            pInputText
+            [formControl]="description"
+            placeholder="Enter description of the course"
+          />
+          <small
+            id="username-help"
+            style="color: brown"
+            *ngIf="description.errors?.required"
+            >Description of the course is required</small
+          >
+          <small
+            id="username-help"
+            style="color: brown"
+            *ngIf="description.errors?.minlength"
+            >Description must be 20 characters long</small
+          >
+        </div>
+      </div>
+      <div class="p-fluid" style="margin-bottom: 1em">
+        <div class="p-field">
+          <label for="url">Course URL</label>
+          <input
+            id="url"
+            required
+            type="text"
+            pInputText
+            [formControl]="url"
+            placeholder="Enter url of the course"
+          />
+          <small
+            id="username-help"
+            style="color: brown"
+            *ngIf="url.errors?.required"
+            >Url of the course is required</small
+          >
+          <small
+            id="username-help"
+            style="color: brown"
+            *ngIf="url.errors?.minlength"
+            >URL must be 13 characters long</small
+          >
+        </div>
+      </div>
+      <div class="p-fluid" style="margin-bottom: 1em">
+        <div class="p-field">
+          <label for="url">Image URL</label>
+          <input
+            id="url"
+            required
+            type="text"
+            pInputText
+            [formControl]="imageUrl"
+            placeholder="Enter URL of the cover image"
+          />
+          <small
+            id="username-help"
+            style="color: brown"
+            *ngIf="imageUrl.errors?.required"
+            >Image url of the cover image is required</small
+          >
+          <small
+            id="username-help"
+            style="color: brown"
+            *ngIf="imageUrl.errors?.minlength"
+            >URL must be 13 characters long</small
+          >
+        </div>
+      </div>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="footer">
+    <button
+      pButton
+      pRipple
+      class="p-button-rounded p-button-warning p-button-raised"
+      icon="pi pi-times"
+      label="Cancel"
+      (click)="triggerCloseModalEvent()"
+    ></button>
+    <button
+      pButton
+      pRipple
+      class="p-button-info p-button-rounded p-button-raised"
+      icon="pi pi-check"
+      label="Create"
+      [disabled]="
+        !!this.name.errors || !!this.url.errors || !!this.imageUrl.errors
+      "
+      (click)="createTutorial()"
+    ></button>
+  </ng-template>
+</p-dialog>

@@ -1,0 +1,7 @@
+<div style="height: 100vh; width: 100vwl; position: relative; overflow: auto; padding: 1em;">
+  <h1 class="p-text-lowercase">Angular with NgRx</h1>
+  <app-read></app-read>
+  <button pTooltip="Add Tutorial" pButton pRipple type="button" icon="pi pi-plus" class="p-button-rounded p-button-info add-button" (click)="toggleModal()" *ngIf="!createModalOpen"></button>
+  <app-create-modal *ngIf="createModalOpen" (closeModalEvent)="toggleModal()"></app-create-modal>
+</div>
+<router-outlet></router-outlet>

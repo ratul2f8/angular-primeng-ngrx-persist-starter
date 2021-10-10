@@ -1,0 +1,24 @@
+<ng-container *ngFor="let tutorial of tutorials; index as i">
+  <p-card
+    header="{{ tutorial.name }}"
+    subheader="{{ tutorial.description }}"
+    [style]="{ maxWidth: '350px', width: '70vw', marginTop: '1em' }"
+    styleClass="p-card-shadow"
+  >
+    <ng-template pTemplate="header">
+      <img alt="Card" src="{{ tutorial.imageUrl }}" />
+    </ng-template>
+    <a target="blank" href="{{ tutorial.url }}">
+      <p-button label="Click here to get" styleClass="p-button-link"></p-button>
+    </a>
+    <ng-template pTemplate="footer">
+      <p-button
+        label="Remove"
+        (onClick)="removeTutorial(i)"
+        icon="pi pi-times"
+        styleClass="p-button-secondary"
+        [style]="{ 'margin-left': '.5em' }"
+      ></p-button>
+    </ng-template>
+  </p-card>
+</ng-container>
